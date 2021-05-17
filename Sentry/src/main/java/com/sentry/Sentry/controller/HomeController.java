@@ -16,6 +16,15 @@ public class HomeController {
         return "index";
     }
 
-
+  //Login
+    @RequestMapping("/login")
+	public String showLoginPage() {
+		return "login"; 
+	}
+  //signup
+    @RequestMapping("/signup")
+	public String showSignUpPage() {
+		return "signup"; 
+	}
 
 }

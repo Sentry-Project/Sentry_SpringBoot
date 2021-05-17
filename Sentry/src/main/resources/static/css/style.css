@@ -242,7 +242,7 @@ p {
 
 /*SIGNUP SIGNIN*/
 
-form{
+#login_signup{
 
 	margin: 0 auto;
 	width:80%;
