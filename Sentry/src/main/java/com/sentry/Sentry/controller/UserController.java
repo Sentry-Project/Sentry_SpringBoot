@@ -12,16 +12,12 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Controller
-@RequestMapping("/dashboard")
+//@RequestMapping("/dashboard")
 public class UserController {
 
     private UserService userService;
 
-    
-    @RequestMapping("/setting")
-	public String showSettingPage() {
-		return "setting"; 
-	}
+  
 
     
     //inject user dao
@@ -29,6 +25,26 @@ public class UserController {
     public UserController(UserService theUserService){
         userService= theUserService;
     }
+
+    /*setting page*/
+    /*show information*/
+    @RequestMapping("/setting")
+	public String showSettingPage(Model theModel) {
+    	User theUser = userService.findById(5);
+        theModel.addAttribute("user", theUser);
+        
+		return "setting"; 
+	}    
+   /*update the form of setting page*/
+    @PostMapping("/update")
+    public String updateSettingForm(@ModelAttribute("user") User theUser){
+    	theUser.setId(5);
+        userService.save(theUser);
+        //redirect
+        return "setting";
+    }
+    
+    
 
     @GetMapping("/sample")
     public String sampleForm(Model theModel){
