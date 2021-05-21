@@ -26,11 +26,12 @@ public class RoomController {
     
     
 	 @GetMapping("/room")
-	 public String displayRoomPage(Model theModel){
+	 public String  displayRoomPage(Model theModel){
 		 List<Room> room = roomService.findAll();
 		 for (int i = 0; i < room.size(); i++) {
 	        theModel.addAttribute("room", room.get(i));
 	       }
+		 theModel.addAttribute("strings", room);
 	     return "room";
 	  }
 
@@ -41,7 +42,7 @@ public class RoomController {
 		   theRoom.setuserid(5);
 	       roomService.save(theRoom);	    	
 	        //redirect
-	    	return "room";
+	      return "redirect:/room";
     }
 
 

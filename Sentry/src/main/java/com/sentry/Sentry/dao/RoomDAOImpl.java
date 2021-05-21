@@ -34,7 +34,7 @@ public class RoomDAOImpl implements RoomDAO{
         //execute query and get result
         rooms = theQuery.setParameter("user_id", 5).getResultList();
 
-        //return result
+      //return result
 		return rooms;
 	}
 

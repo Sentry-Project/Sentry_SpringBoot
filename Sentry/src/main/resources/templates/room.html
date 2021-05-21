@@ -54,18 +54,24 @@
 	<div class="container-fluid room">
 	<div class="container">
 	<div class="row">
-
+    
+     <div class="col-md-4 col-sm-12 Kitchen"  th:each="u:${strings}">
+     <img class="img_rooms" src="../images/Kitchenimage.png" />
+		<div class="texte_centrer" >
+		    <div th:text="${u.getrname()}"></div>
+		</div>
+	</div>
+	<!--  
 	<div class="col-md-4 col-sm-12 Kitchen">
 		<img class="img_rooms" src="../images/Kitchenimage.png" />
-		<div class="texte_centrer">
-		Kitchen
+		<div class="texte_centrer" >
+		    <div th:text="${u.getrname()}"></div>
 		</div>
 	</div>
 
 	<div class="col-md-4 col-sm-12 Bedroom">
 		<img class="img_rooms" src="../images/Bedroom.png" />
 		<div class="texte_centrer">
-		Bedroom
 		</div>
 	</div>
 	
@@ -75,7 +81,7 @@
 		Bedroom
 		</div>
 	</div>
-	
+	-->
 	</div>
 	</div>
 	</div>
