@@ -31,9 +31,7 @@ public class UserDAOImpl implements UserDAO{
                 currentSession.createQuery("from User", User.class);
         //execute query and get result
         List<User> users = theQuery.getResultList();
-
         //return result
-
         return users;
     }
 
