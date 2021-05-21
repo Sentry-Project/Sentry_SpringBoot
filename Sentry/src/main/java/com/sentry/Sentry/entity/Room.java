@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class Room {
     //define fields
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ROOM_ID")
     private int rid;
 
@@ -28,17 +29,16 @@ public class Room {
     public Room(){
 
     }
-
+    public Room(String rname, int user_id){
+        this.rname = rname;
+        this.user_id = user_id;
+    }
     public Room(int rid, String rname, int user_id) {
         this.rid = rid;
         this.rname = rname;
         this.user_id = user_id;
     }
-    /*
-    public Room(String rname, int user_id) {
-        this.rname = rname;
-        this.user_id = user_id;
-    }*/
+
    
     public int getRId() {
         return rid;
@@ -63,14 +63,7 @@ public class Room {
 	public void setuserid(int user_id) {
 		this.user_id = user_id;
 	}
-    /*public User getuse() {
-		return user;
-	}
 
-	public void setuser(User user) {
-		this.user = user;
-	}*/
-    
     @Override
     public String toString() {
 		 return "Room{" +

@@ -16,6 +16,7 @@ public class RoomDAOImpl implements RoomDAO{
 
     //define field for entity manager
     private EntityManager entityManager;
+    private     List<Room> rooms;
 
     //set up constructor injection
     @Autowired
@@ -29,9 +30,9 @@ public class RoomDAOImpl implements RoomDAO{
 
         //create query
         Query<Room> theQuery =
-                currentSession.createQuery("from Room", Room.class);
+                currentSession.createQuery("from Room where FK_USER_ID=:user_id", Room.class);
         //execute query and get result
-        List<Room> rooms = theQuery.getResultList();
+        rooms = theQuery.setParameter("user_id", 5).getResultList();
 
         //return result
 		return rooms;
@@ -55,6 +56,7 @@ public class RoomDAOImpl implements RoomDAO{
 	
 		//get current session
         Session currentSession = entityManager.unwrap(Session.class);
+        rooms.add(theRoom);
 
         //save user
         currentSession.saveOrUpdate(theRoom);
