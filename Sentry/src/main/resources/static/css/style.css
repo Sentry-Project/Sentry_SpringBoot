@@ -241,7 +241,15 @@ p {
 }
 
 /*SIGNUP SIGNIN*/
+#signup-body{
+	
+	background-color:  rgba(221, 187, 225, 1);
+}
 
+#login-body{
+	
+	background-color:  rgba(221, 187, 225, 1);
+}
 #login_signup{
 
 	margin: 0 auto;
