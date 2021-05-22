@@ -1,9 +1,10 @@
 package com.sentry.Sentry.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
     //define fields
     @Id
@@ -29,13 +30,24 @@ public class User {
     @Column(name = "ADDRESS")
     private String address;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"
+            )
+    )
+    private Collection<Role> roles;
+
 
     //constructors
     public User(){
 
     }
 
-    public User(int id, String password, String firstName, String lastName, String email, String phoneNo, String address) {
+    public User(int id, String password, String firstName, String lastName, String email, String phoneNo, String address, Collection<Role> roles) {
         this.id = id;
         this.password = password;
         this.firstName = firstName;
@@ -43,16 +55,17 @@ public class User {
         this.email = email;
         this.phoneNo = phoneNo;
         this.address = address;
+        this.roles = roles;
     }
 
-
-    public User(String password, String firstName, String lastName, String email, String phoneNo, String address) {
+    public User(String password, String firstName, String lastName, String email, String phoneNo, String address, Collection<Role> roles) {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNo = phoneNo;
         this.address = address;
+        this.roles = roles;
     }
 
     //getter/setter
@@ -113,8 +126,14 @@ public class User {
         this.address = address;
     }
 
+    public Collection<Role> getRoles() {
+        return roles;
+    }
 
-    //toString
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+//toString
 
     @Override
     public String toString() {

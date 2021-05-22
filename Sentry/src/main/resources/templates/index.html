@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,18 +24,38 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+<!--        <span th:if="${session.user}">-->
+<!--          <li th:if="${session.user}" class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--            <a class="nav-link" th:href="@{/dashboard}">Welcome</a>-->
+<!--          </li>-->
+<!--          <li th:if="${session.user}" class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--            <a class="nav-link" th:href="@{/dashboard}">Room</a>-->
+<!--          </li>-->
+<!--          <li th:if="${session.user}" class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--            <a class="nav-link" th:href="@{/dashboard}">Settings</a>-->
+<!--          </li>-->
+<!--          <li th:if="${session.user}" class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--            <a class="nav-link" th:href="@{/logout}">SignOut</a>-->
+<!--          </li>-->
+<!--        </span>-->
+
+        <!--        <span th:unless="${session.user}">-->
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#services">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login">Login/Register</a>
-        </li>
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login/Register</a>
+          </li>
+
+
+        <!--        </>span>-->
 
 
       </ul>

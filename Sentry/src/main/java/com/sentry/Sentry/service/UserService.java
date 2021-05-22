@@ -1,12 +1,12 @@
 package com.sentry.Sentry.service;
 
 import com.sentry.Sentry.entity.User;
+import com.sentry.Sentry.web.dto.UserRegistrationDto;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService {
-    public List<User> findAll();
-    public User findById(int theId);
-
-    public void save(User theUser);
+public interface UserService extends UserDetailsService {
+   User findByUserName(String userName);
+   User save(UserRegistrationDto registrationDto);
 }
