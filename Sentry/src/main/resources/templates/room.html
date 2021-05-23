@@ -81,6 +81,15 @@
 	<div class="container">
 	<div class="row">
 
+	<div th:each="u:${strings}" class="col-md-4 col-sm-12 Kitchen"  >
+     <img class="img_rooms" src="../images/Kitchenimage.png" />
+		<div class="texte_centrer" >
+		    <div th:text="${u.getrname()}"></div>
+		</div>
+	</div>
+
+	
+<!-- 
 	<div class="col-md-4 col-sm-12 Kitchen">
 		<img class="img_rooms" src="../images/Kitchenimage.png" />
 		<div class="texte_centrer">
@@ -101,7 +110,7 @@
 		Bedroom
 		</div>
 	</div>
-	
+		-->
 	</div>
 	</div>
 	</div>
@@ -111,6 +120,7 @@
     Add New Room</button>
   
   
+            
             <!-- Modal -->
             <div class="modal fade"
                  id="addRoom">
@@ -126,25 +136,25 @@
                                   X</span>
                             </button>
                         </div>
-                <div class="modal-body">
-                  <form id="roomForm" name="room" role="form">
-										
+               <form id="roomForm" name="room" role="form"  th:action="@{/addoneroom}"
+                     th:object="${room}" method="POST">
+                <div class="modal-body">										
 						<div class="form-group">
 						<label for="device">Room Name</label>
-						<input type ="text" name="room" class="form-control"></input>
+						<input type ="text" th:field="*{rname}" name="room" class="form-control" required></input>
  				        </div>
 					
 					    <div class="form-group">
 						<label for="notes">Note</label>
 						<textarea name="notes" class="form-control"></textarea>
 					    </div>		
-				</form>			
+							
 				</div>
 				<div class="modal-footer">					
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<input type="submit" class="btn btn-success" id="submit" value = "submit">
 				</div>
-			   
+			   </form>
 
              </div>
                      
