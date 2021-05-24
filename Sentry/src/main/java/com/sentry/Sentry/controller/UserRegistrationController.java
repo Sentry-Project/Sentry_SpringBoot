@@ -26,6 +26,7 @@ public class UserRegistrationController {
     @GetMapping
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new UserRegistrationDto());
+        ///signup page
         return "signup";
     }
 
