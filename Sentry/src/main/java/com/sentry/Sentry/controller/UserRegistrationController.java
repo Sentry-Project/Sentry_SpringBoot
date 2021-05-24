@@ -26,7 +26,8 @@ public class UserRegistrationController {
     @GetMapping
     public String showRegistrationForm(Model model){
         model.addAttribute("user", new UserRegistrationDto());
-        return "testreg";
+        ///signup page
+        return "signup";
     }
 
     @PostMapping
