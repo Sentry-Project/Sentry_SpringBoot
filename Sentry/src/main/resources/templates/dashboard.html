@@ -144,9 +144,9 @@
     		<div class="py-4">
 	    	<div class="pt-lg-2" id="card_info">
 	    		<p class="text-center mt-2">Devices</p>
-	    		<p class="text-left p-2">Active: 5</p>
-	    		<p class="text-left p-2">Inactive: 0</p>
-	    		<p class="text-left p-2">Error: 0</p>
+	    		<p class="text-left p-2">Active: <spam th:text="${deviceactive}"></spam></p>
+	    		<p class="text-left p-2">Inactive: <spam th:text="${deviceinactive}"></spam></p>
+	    		<p class="text-left p-2">Error:  <spam th:text="${deviceerror}"></spam></p>
 	    	</div>
 	        </div>
 
