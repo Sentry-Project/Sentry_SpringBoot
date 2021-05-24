@@ -1,14 +1,17 @@
 package com.sentry.Sentry.repository;
 
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.sentry.Sentry.entity.Room;
+
 import com.sentry.Sentry.entity.Sensor;
 
 public interface SensorRepository extends JpaRepository<Sensor, Integer> {
+
 
 
 
@@ -28,5 +31,7 @@ public interface SensorRepository extends JpaRepository<Sensor, Integer> {
 
 
 }
+
+
 
 
