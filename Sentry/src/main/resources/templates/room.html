@@ -15,6 +15,7 @@
                 crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" 
                 crossorigin="anonymous"></script>
+	<script src=""></script>
 </head>
 <body>
 
@@ -82,7 +83,8 @@
 	<div class="row">
 
 	<div th:each="u:${strings}" class="col-md-4 col-sm-12 Kitchen"  >
-     <img class="img_rooms" src="../images/Kitchenimage.png" />
+     <img class="img_rooms" src="../images/Kitchenimage.png" th:data-param1="${u.getRId()}"
+		  onclick="getRoom(this.getAttribute('data-param1'))"/>
 		<div class="texte_centrer" >
 		    <div th:text="${u.getrname()}"></div>
 		</div>
@@ -167,111 +169,120 @@
 	<div class="container sensor">
 	<div class="row">
 
+<!--		SENSORS GO HERE-->
+		<span id="sensorResultsBlock">
 
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">
-	<div class="temperature">
-	   <div class="tempara">
-		<img class="block_img1"  src="../images/Temperature.png"/>
-		<div class="block text">
-		<p class="block_text">24&#8451</p>
-		</div>
-		<img class="block_Setting"  src="../images/Settings.png" />	
-	   </div>
-	   
-		<div  class="onoff">
-			On
-		</div>
-	
-		<div  class="zone">
-			Indoor Temperature			
-		</div>
+		</span>
 	</div>
-	
-	</div>
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">
-			<div class="temperature">
-			<div class="tempara">
-			<img class="block_img" src="../images/Gaz.png" />
-			<div class="block text">
-			<p class="block_text">27 mpg</p>			
-			</div>
-			<img class="block_Setting" src="../images/Settings.png" />		
-			</div>
-			
-			<div  class="onoff">
-				On
-			</div>
-	
-			<div  class="zone">
-				Gaz Reading				
-			</div>
+<!--	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">-->
+<!--	<div class="temperature">-->
+<!--	   <div class="tempara">-->
+<!--		<img class="block_img1"  src="../images/Temperature.png"/>-->
+<!--		<div class="block text">-->
+<!--		<p class="block_text">24&#8451</p>-->
+<!--		</div>-->
+<!--		<img class="block_Setting"  src="../images/Settings.png" />-->
+<!--	   </div>-->
 
-	</div>
-	
-	</div>
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >
-			<div class="temperature">
-			<div class="tempara">
-			<img class="block_img" src="../images/Gaz.png" />
-			<div class="block text">
-				<p class="block_text">27 mpg</p>
-			</div>
-			<img class="block_Setting" src="../images/Settings.png" />
+<!--		<div  class="onoff">-->
+<!--			On-->
+<!--		</div>-->
 
-		    </div>
-		<div  class="onoff">	
-			Off
-		</div>
+<!--		<div  class="zone">-->
+<!--			Indoor Temperature-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	</div>-->
+<!--		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">-->
+<!--			<div class="temperature">-->
+<!--			<div class="tempara">-->
+<!--			<img class="block_img" src="../images/Gaz.png" />-->
+<!--			<div class="block text">-->
+<!--			<p class="block_text">27 mpg</p>-->
+<!--			</div>-->
+<!--			<img class="block_Setting" src="../images/Settings.png" />-->
+<!--			</div>-->
+
+<!--			<div  class="onoff">-->
+<!--				On-->
+<!--			</div>-->
+
+<!--			<div  class="zone">-->
+<!--				Gaz Reading-->
+<!--			</div>-->
+
+<!--	</div>-->
+
+<!--	</div>-->
+<!--		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >-->
+<!--			<div class="temperature">-->
+<!--			<div class="tempara">-->
+<!--			<img class="block_img" src="../images/Gaz.png" />-->
+<!--			<div class="block text">-->
+<!--				<p class="block_text">27 mpg</p>-->
+<!--			</div>-->
+<!--			<img class="block_Setting" src="../images/Settings.png" />-->
+
+<!--		    </div>-->
+<!--		<div  class="onoff">-->
+<!--			Off-->
+<!--		</div>-->
+
+<!--		<div  class="zone">-->
+<!--		Gaz Reading-->
+<!--	    </div>-->
+
+<!--	</div>-->
+
+
+		<!--DEVICES GO HERE-->
+		<span id="deviceResultsBlock">
+
+		</span>
+
+<!--	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >-->
+<!--		<div class="device_card">-->
+<!--	    <div class="tempara">-->
+<!--		<img class="block_img" src="../images/Machine.png" />-->
+<!--		<div class="block text">-->
+<!--			<p class="block_text"></p>-->
+<!--		</div>-->
+<!--		<img class="block_Setting" src="../images/Settings.png" />	-->
+<!--	    </div>-->
+<!--	    -->
+<!--		<div  class="onoff">-->
+<!--			On-->
+<!--		</div>-->
+<!--	-->
+<!--	  <div  class="zone">-->
+<!--		Refrigerator-->
+<!--	   </div>-->
+<!--	-->
+<!--	</div>-->
+<!--	</div>-->
 	
-		<div  class="zone">
-		Gaz Reading
-	    </div>
-	
-	</div>
-	</div>
-	
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >
-		<div class="device_card">
-	    <div class="tempara">
-		<img class="block_img" src="../images/Machine.png" />
-		<div class="block text">
-			<p class="block_text"></p>
-		</div>
-		<img class="block_Setting" src="../images/Settings.png" />	
-	    </div>
-	    
-		<div  class="onoff">
-			On
-		</div>
-	
-	  <div  class="zone">
-		Refrigerator
-	   </div>
-	
-	</div>
-	</div>
-	
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">
-			<div class="device_card">
-			<div class="tempara">
-			<img class="block_img"  src="../images/Machine.png"/>
-			<div class="block text">
-			<p class="block_text"></p>
-			</div>
-			<img class="block_Setting" src="../images/Settings.png" />		
-		    </div>
-			<div  class="onoff">
-				On
-				
-			</div>
-			
-			<div  class="zone">
-		
-				Oven
-		
-			</div>			
-			</div>
-		</div>
+<!--		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">-->
+<!--			<div class="device_card">-->
+<!--			<div class="tempara">-->
+<!--			<img class="block_img"  src="../images/Machine.png"/>-->
+<!--			<div class="block text">-->
+<!--			<p class="block_text"></p>-->
+<!--			</div>-->
+<!--			<img class="block_Setting" src="../images/Settings.png" />		-->
+<!--		    </div>-->
+<!--			<div  class="onoff">-->
+<!--				On-->
+<!--				-->
+<!--			</div>-->
+<!--			-->
+<!--			<div  class="zone">-->
+<!--		-->
+<!--				Oven-->
+<!--		-->
+<!--			</div>			-->
+<!--			</div>-->
+<!--		</div>-->
 	
 	
 	</div>
@@ -356,9 +367,12 @@
       <p>Copyright &copy; 2020, All Rights Reserved</p>
     </div>
   </footer>
-  
-  
-  
-  
+
+
+		<script th:src="@{/js/getrooms.js}"> </script>
+
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script></body>
+
 </body>
 </html>
