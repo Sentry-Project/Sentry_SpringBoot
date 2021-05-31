@@ -1,4 +1,5 @@
 function getRoom(rid){
+    $('#adddevice_but').attr('currId', rid);
     $.ajax({
         url: 'getSensor',
         data: {rid: rid},
@@ -83,6 +84,36 @@ function getDevice(rid){
         }
     });
 }
+
+$(function (){
+    $("#deviceForm").submit(function (e){
+        e.preventDefault();
+        let rid = $("#adddevice_but").attr('currId');
+        if (rid == null){
+            alert("Please select Room");
+        } else{
+            let formData = $("#devName").val();
+            $.ajax({
+                type: "POST",
+                url: "saveDevice",
+                data: {rid: rid, device_name: formData},
+                success: function (data){
+                    getDevice(rid);
+                    console.log("success");
+                },
+                error: function (e){
+                    console.log(e);
+                }
+            })
+
+        }
+        //alert("HEllo bruh")
+    })
+});
+
+
+
+
 
 
 // data.forEach((obj) =>{
