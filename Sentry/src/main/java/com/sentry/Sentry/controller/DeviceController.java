@@ -4,9 +4,7 @@ import com.sentry.Sentry.entity.Device;
 import com.sentry.Sentry.entity.Sensor;
 import com.sentry.Sentry.service.DeviceService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,15 @@ public class DeviceController {
         List<Device> devices =  deviceService.findDevicesByRoomRid(rid);
 
         return devices;
+    }
+
+    @RequestMapping(value = "/saveDevice", method = RequestMethod.POST)
+    public String saveDevice(@ModelAttribute("device") Device theDevice, @RequestParam("rid") Integer rid,
+                             @RequestParam("device_name") String device_name){
+        theDevice.setDeviceName(device_name);
+       theDevice.setFKRoomID(rid);
+
+        deviceService.save(theDevice);
+        return "redirect:/room";
     }
 }

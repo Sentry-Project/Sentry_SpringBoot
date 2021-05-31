@@ -16,6 +16,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" 
                 crossorigin="anonymous"></script>
 	<script src=""></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -291,10 +293,10 @@
 	
 	<!-- pop up button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDevice" id="adddevice_but">
-    Add New Devic</button>
+    Add New Device</button>
  
             <!-- Modal -->
-            <div class="modal fade" id="addDevice">
+            <div class="modal fade" id="addDevice" >
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -309,42 +311,18 @@
                         </div>
                 <div class="modal-body">
                <form id="deviceForm" name="device" role="form">
-				<div class="modal-body">				
+				<div class="modal-body">
 					<div class="form-group">
-				
-				
-				
-						<label for="device">Addable Device List</label>
-					
-						<select id="addableDevices" name="addableDevices" class= "form-control">
-							<option value="Refrigerator">Refrigerator</option>
-							<option value="oven">Oven</option>
-							<option value="gasReader">Gas Reader</option>
-							<option value="thermometer">Thermometer</option>
-
-						</select>
-
+						<label for="device">Device Name</label>
+						<input type="text" id="devName" name="device_name" class="form-control" required/>
 					</div>
-					<div class="form-group">
-						<label for="rooms">Room</label>
-					<select id="roomList" name="roomList" class= "form-control">
-
-					<option value="room1">Room1</option>
-					<option value="room2">Room2</option>
-					<option value="toilet">Toilet</option>
-					<option value="kitchen">Kitchen</option>
-
-						</select>
-
-					</div>
-					<div class="form-group">
-						<label for="notes">Note</label>
-						<textarea name="notes" class="form-control"></textarea>
-					</div>					
 				</div>
+
+
 				<div class="modal-footer">					
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="submit" class="btn btn-success" id="submit" value = "submit">
+					<input type="submit" class="btn btn-success" data-dismiss="modal"
+						   id="submit" value = "submit">
 				</div>
 			</form>
 
@@ -369,10 +347,10 @@
   </footer>
 
 
+
 		<script th:src="@{/js/getrooms.js}"> </script>
 
 
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script></body>
 
 </body>
 </html>

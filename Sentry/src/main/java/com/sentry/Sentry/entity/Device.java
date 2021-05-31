@@ -25,6 +25,12 @@ public class Device {
 
     }
 
+    public Device(String device_name,  int  fk_room_id) {
+        this.device_name = device_name;
+        this.fk_room_id=  fk_room_id;
+
+    }
+
     public Device(int device_id, String device_name, int device_status, int  fk_room_id) {
         this.device_id = device_id;
         this.device_name = device_name;
