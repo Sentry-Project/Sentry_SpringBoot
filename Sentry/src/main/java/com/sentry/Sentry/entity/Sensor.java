@@ -1,5 +1,7 @@
 package com.sentry.Sentry.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +26,7 @@ public class Sensor {
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_ROOM_ID", nullable = false)
+    @JsonIgnoreProperties(value = {"sensor", "hibernateLazyInitializer"})
     private Room room;
 
     //constructors
