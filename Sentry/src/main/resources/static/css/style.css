@@ -417,7 +417,7 @@ background-color: #381E41;
 #block_img1{
 	width: 43%;
     float: left;
-    padding: 40px;
+    padding: 10px;
 }
 .block_img{
 	width: 35%;
@@ -474,7 +474,7 @@ background-color: #381E41;
   .device_card{
      height: 150px;
   }
-  #block_img1{
+    #block_img1{
 	width: 43%;
     float: left;
     padding: 20px;
