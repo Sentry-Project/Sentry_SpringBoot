@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Device {
     //define fields
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DEVICE_ID")
     private int device_id;
 

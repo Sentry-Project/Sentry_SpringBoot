@@ -6,14 +6,26 @@ function getRoom(rid){
         success: function (data){
             getDevice(rid);
             let results;
+            let sen_r;
             $("#sensorResultsBlock").empty();
 
             for (let i=0; i < data.length; i++){
                 console.log(data[i].sensorType);
+                if(data[i].sensorType =="Temperature"){
+                    sen_r='<i id="block_img1" class="fas fa-temperature-low fa-4x"></i>';
+                
+                }else if(data[i].sensorType =="Water"){
+                    sen_r='<i id="block_img1" class="fas fa-tint fa-4x"></i>';
+                
+                }else{
+                   sen_r='<i id="block_img1" class="fas fa-wind fa-4x"></i>';
+                
+                };
                 results = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">' +
                     '<div class="temperature">' +
                     '<div class="tempara">' +
                   //  '<img class="block_img1"  src="../images/Temperature.png"/>' +
+                    sen_r+
                     '<div class="block text">' +
                     '<p class="block_text">fix 24&#8451</p>' +
                     '</div>' +
@@ -51,18 +63,22 @@ function getDevice(rid){
             $("#deviceResultsBlock").empty();
             for (let i=0; i < deviceData.length; i++){
                 //console.log(deviceData[i]);
-
+				if(deviceData[i].deviceStatus== 1){
+                   var str="on";               
+                }else{
+                   var str="off"; 
+                }
                 result2 = '<span>' +
                     '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >' +
                     '<div class="device_card">' +
                     ' <div class="tempara">' +
-                   // '<img class="block_img" src="../images/Machine.png" />' +
+                   '<img class="block_img" src="../images/Machine.png" />' +
                     '<div class="block text">' +
                     '<p class="block_text"></p>' +
                     '</div>' +
                     '<img class="block_Setting" src="../images/Settings.png" />'+
                     '</div>' +
-                    '<div  class="onoff"> fix On</div>' +
+                    '<div  class="onoff"> '+ str+'</div>' +
                     '<div class="zone">' +
                     '<span hidden>' +
                     deviceData[i].id +

@@ -414,10 +414,10 @@ background-color: #381E41;
 	/*margin-top: 40px;*/
 	margin-top: 75px;
 }
-.block_img1{
+#block_img1{
 	width: 43%;
     float: left;
-    padding: 10px;
+    padding: 40px;
 }
 .block_img{
 	width: 35%;
@@ -474,6 +474,11 @@ background-color: #381E41;
   .device_card{
      height: 150px;
   }
+  #block_img1{
+	width: 43%;
+    float: left;
+    padding: 20px;
+ }
   .block{
   font-size: 20px;
  }
@@ -500,6 +505,12 @@ background-color: #381E41;
    }
    .device_card{
       height:160px;
+   }
+   #block_img1{
+	width: 43%;
+    float: left;
+    padding: 20px;
+    font-size:50px;
    }
 }
 

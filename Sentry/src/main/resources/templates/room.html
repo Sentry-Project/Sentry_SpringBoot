@@ -84,14 +84,17 @@
 	<div class="container">
 	<div class="row">
 
-	<div th:each="u:${strings}" class="col-md-4 col-sm-12 Kitchen"  >
-     <img class="img_rooms" src="../images/Kitchenimage.png" th:data-param1="${u.getRId()}"
+<div th:each="u:${strings}" class="col-md-4 col-sm-12 Kitchen"  >
+     <img th:if="${#strings.containsIgnoreCase(u.getrname(),'kitchen')}" class="img_rooms" src="../images/Kitchenimage.png" th:data-param1="${u.getRId()}"
+		  onclick="getRoom(this.getAttribute('data-param1'))"/>
+     <img th:if="${#strings.containsIgnoreCase(u.getrname(),'livingroom')}" class="img_rooms" src="../images/livingroom.png" th:data-param1="${u.getRId()}"
+		  onclick="getRoom(this.getAttribute('data-param1'))"/>
+	<img th:if="${!#strings.containsIgnoreCase(u.getrname(),'livingroom') && !#strings.containsIgnoreCase(u.getrname(),'kitchen') }"  class="img_rooms" src="../images/Bedroom.png" th:data-param1="${u.getRId()}"
 		  onclick="getRoom(this.getAttribute('data-param1'))"/>
 		<div class="texte_centrer" >
 		    <div th:text="${u.getrname()}"></div>
 		</div>
 	</div>
-
 	
 <!-- 
 	<div class="col-md-4 col-sm-12 Kitchen">
@@ -321,8 +324,7 @@
 
 				<div class="modal-footer">					
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="submit" class="btn btn-success" data-dismiss="modal"
-						   id="submit" value = "submit">
+					<input type="submit" class="btn btn-success"  id="submit" value = "submit">
 				</div>
 			</form>
 
