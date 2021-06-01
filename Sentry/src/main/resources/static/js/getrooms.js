@@ -6,6 +6,7 @@ function getRoom(rid){
         success: function (data){
             getDevice(rid);
             let results;
+            let sen_r;
             $("#sensorResultsBlock").empty();
 
             for (let i=0; i < data.length; i++){

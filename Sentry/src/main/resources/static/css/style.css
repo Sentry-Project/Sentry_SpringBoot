@@ -417,7 +417,7 @@ background-color: #381E41;
 #block_img1{
 	width: 43%;
     float: left;
-    padding: 10px;
+    padding: 40px;
 }
 .block_img{
 	width: 35%;
@@ -475,8 +475,6 @@ background-color: #381E41;
      height: 150px;
   }
     #block_img1{
-	width: 43%;
-    float: left;
     padding: 20px;
  }
   .block{
@@ -495,6 +493,10 @@ background-color: #381E41;
   .img_rooms{
     height: 160px;
     }
+    #block_img1{
+    padding: 20px;
+    font-size:38px;
+   }
 }
 @media only screen and (max-width: 425px) {
    .temperature{
@@ -507,10 +509,8 @@ background-color: #381E41;
       height:160px;
    }
    #block_img1{
-	width: 43%;
-    float: left;
     padding: 20px;
-    font-size:50px;
+    font-size:45px;
    }
 }
 
