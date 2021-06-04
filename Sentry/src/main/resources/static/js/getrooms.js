@@ -38,22 +38,23 @@ function getRoom(rid){
                    sen_unit="ppm";
                 };
                 
-                for(let j=0; j<sensordata.length; j++){
-                     console.log(data[i]);
-                     if(sensordata[j].fksensorID == data[i].id){
-                        var sensor_value = sensordata[j].sensorValue;
-                        if(sensordata[j].sensorStatus== 1){
-			                   var sensor_status="on";               
-			                }else{
-			                   var sensor_status="off"; 
-			                }
-                        
-                        //break;                   
-                     }else{
-                        var sensor_status = "off";
-                        var sensor_value = "0";
-                     }
-                
+                var sensor_status = "off";
+                var sensor_value = "0";
+                if(sensordata.length !=0){
+	                for(let j=0; j<sensordata.length; j++){
+	                     console.log(data[i]);
+	                     if(sensordata[j].fksensorID == data[i].id){
+	                        var sensor_value = sensordata[j].sensorValue;
+	                        if(sensordata[j].sensorStatus== 1){
+				                   var sensor_status="on";               
+				                }else{
+				                   var sensor_status="off"; 
+				                }
+	                        
+	                        //break;                   
+	                     }
+	                
+	                }
                 }
                 
                 
