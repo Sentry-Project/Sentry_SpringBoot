@@ -65,7 +65,7 @@ public class RoomController {
         	
 		    roomService.save(theRoom);	
 			
-			Sensor s1 = new Sensor("Tempeartrue","TempeartrueSensor","celsius");
+		    Sensor s1 = new Sensor("Temperature","TemperatureSensor","celsius");
 			s1.setRoom(theRoom);
 			sensorService.save(s1);
 			

@@ -38,7 +38,13 @@ public class SensorServiceImpl implements SensorService{
 		// TODO Auto-generated method stub
 		return sensors;
 	}
-	
+
+	@Override
+	public List<Sensor> findSensorsByRoomRid(int rid) {
+		sensors = sensorRepository.findSensorsByRoomRid(rid);
+		return sensors;
+	}
+
 	public long countactive(int i) {
 		countsensorsactive= sensorRepository.countactive(i);
 		// TODO Auto-generated method stub

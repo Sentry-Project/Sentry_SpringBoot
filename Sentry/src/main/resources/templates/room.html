@@ -15,6 +15,9 @@
                 crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" 
                 crossorigin="anonymous"></script>
+	<script src=""></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -81,13 +84,17 @@
 	<div class="container">
 	<div class="row">
 
-	<div th:each="u:${strings}" class="col-md-4 col-sm-12 Kitchen"  >
-     <img class="img_rooms" src="../images/Kitchenimage.png" />
+<div th:each="u:${strings}" class="col-md-4 col-sm-12 Kitchen"  >
+     <img th:if="${#strings.containsIgnoreCase(u.getrname(),'kitchen')}" class="img_rooms" src="../images/Kitchenimage.png" th:data-param1="${u.getRId()}"
+		  onclick="getRoom(this.getAttribute('data-param1'))"/>
+     <img th:if="${#strings.containsIgnoreCase(u.getrname(),'livingroom')}" class="img_rooms" src="../images/livingroom.png" th:data-param1="${u.getRId()}"
+		  onclick="getRoom(this.getAttribute('data-param1'))"/>
+	<img th:if="${!#strings.containsIgnoreCase(u.getrname(),'livingroom') && !#strings.containsIgnoreCase(u.getrname(),'kitchen') }"  class="img_rooms" src="../images/Bedroom.png" th:data-param1="${u.getRId()}"
+		  onclick="getRoom(this.getAttribute('data-param1'))"/>
 		<div class="texte_centrer" >
 		    <div th:text="${u.getrname()}"></div>
 		</div>
 	</div>
-
 	
 <!-- 
 	<div class="col-md-4 col-sm-12 Kitchen">
@@ -167,111 +174,120 @@
 	<div class="container sensor">
 	<div class="row">
 
+<!--		SENSORS GO HERE-->
+		<span id="sensorResultsBlock">
 
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">
-	<div class="temperature">
-	   <div class="tempara">
-		<img class="block_img1"  src="../images/Temperature.png"/>
-		<div class="block text">
-		<p class="block_text">24&#8451</p>
-		</div>
-		<img class="block_Setting"  src="../images/Settings.png" />	
-	   </div>
-	   
-		<div  class="onoff">
-			On
-		</div>
-	
-		<div  class="zone">
-			Indoor Temperature			
-		</div>
+		</span>
 	</div>
-	
-	</div>
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">
-			<div class="temperature">
-			<div class="tempara">
-			<img class="block_img" src="../images/Gaz.png" />
-			<div class="block text">
-			<p class="block_text">27 mpg</p>			
-			</div>
-			<img class="block_Setting" src="../images/Settings.png" />		
-			</div>
-			
-			<div  class="onoff">
-				On
-			</div>
-	
-			<div  class="zone">
-				Gaz Reading				
-			</div>
+<!--	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">-->
+<!--	<div class="temperature">-->
+<!--	   <div class="tempara">-->
+<!--		<img class="block_img1"  src="../images/Temperature.png"/>-->
+<!--		<div class="block text">-->
+<!--		<p class="block_text">24&#8451</p>-->
+<!--		</div>-->
+<!--		<img class="block_Setting"  src="../images/Settings.png" />-->
+<!--	   </div>-->
 
-	</div>
-	
-	</div>
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >
-			<div class="temperature">
-			<div class="tempara">
-			<img class="block_img" src="../images/Gaz.png" />
-			<div class="block text">
-				<p class="block_text">27 mpg</p>
-			</div>
-			<img class="block_Setting" src="../images/Settings.png" />
+<!--		<div  class="onoff">-->
+<!--			On-->
+<!--		</div>-->
 
-		    </div>
-		<div  class="onoff">	
-			Off
-		</div>
+<!--		<div  class="zone">-->
+<!--			Indoor Temperature-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	</div>-->
+<!--		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">-->
+<!--			<div class="temperature">-->
+<!--			<div class="tempara">-->
+<!--			<img class="block_img" src="../images/Gaz.png" />-->
+<!--			<div class="block text">-->
+<!--			<p class="block_text">27 mpg</p>-->
+<!--			</div>-->
+<!--			<img class="block_Setting" src="../images/Settings.png" />-->
+<!--			</div>-->
+
+<!--			<div  class="onoff">-->
+<!--				On-->
+<!--			</div>-->
+
+<!--			<div  class="zone">-->
+<!--				Gaz Reading-->
+<!--			</div>-->
+
+<!--	</div>-->
+
+<!--	</div>-->
+<!--		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >-->
+<!--			<div class="temperature">-->
+<!--			<div class="tempara">-->
+<!--			<img class="block_img" src="../images/Gaz.png" />-->
+<!--			<div class="block text">-->
+<!--				<p class="block_text">27 mpg</p>-->
+<!--			</div>-->
+<!--			<img class="block_Setting" src="../images/Settings.png" />-->
+
+<!--		    </div>-->
+<!--		<div  class="onoff">-->
+<!--			Off-->
+<!--		</div>-->
+
+<!--		<div  class="zone">-->
+<!--		Gaz Reading-->
+<!--	    </div>-->
+
+<!--	</div>-->
+
+
+		<!--DEVICES GO HERE-->
+		<span id="deviceResultsBlock">
+
+		</span>
+
+<!--	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >-->
+<!--		<div class="device_card">-->
+<!--	    <div class="tempara">-->
+<!--		<img class="block_img" src="../images/Machine.png" />-->
+<!--		<div class="block text">-->
+<!--			<p class="block_text"></p>-->
+<!--		</div>-->
+<!--		<img class="block_Setting" src="../images/Settings.png" />	-->
+<!--	    </div>-->
+<!--	    -->
+<!--		<div  class="onoff">-->
+<!--			On-->
+<!--		</div>-->
+<!--	-->
+<!--	  <div  class="zone">-->
+<!--		Refrigerator-->
+<!--	   </div>-->
+<!--	-->
+<!--	</div>-->
+<!--	</div>-->
 	
-		<div  class="zone">
-		Gaz Reading
-	    </div>
-	
-	</div>
-	</div>
-	
-	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2" >
-		<div class="device_card">
-	    <div class="tempara">
-		<img class="block_img" src="../images/Machine.png" />
-		<div class="block text">
-			<p class="block_text"></p>
-		</div>
-		<img class="block_Setting" src="../images/Settings.png" />	
-	    </div>
-	    
-		<div  class="onoff">
-			On
-		</div>
-	
-	  <div  class="zone">
-		Refrigerator
-	   </div>
-	
-	</div>
-	</div>
-	
-		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">
-			<div class="device_card">
-			<div class="tempara">
-			<img class="block_img"  src="../images/Machine.png"/>
-			<div class="block text">
-			<p class="block_text"></p>
-			</div>
-			<img class="block_Setting" src="../images/Settings.png" />		
-		    </div>
-			<div  class="onoff">
-				On
-				
-			</div>
-			
-			<div  class="zone">
-		
-				Oven
-		
-			</div>			
-			</div>
-		</div>
+<!--		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 py-2">-->
+<!--			<div class="device_card">-->
+<!--			<div class="tempara">-->
+<!--			<img class="block_img"  src="../images/Machine.png"/>-->
+<!--			<div class="block text">-->
+<!--			<p class="block_text"></p>-->
+<!--			</div>-->
+<!--			<img class="block_Setting" src="../images/Settings.png" />		-->
+<!--		    </div>-->
+<!--			<div  class="onoff">-->
+<!--				On-->
+<!--				-->
+<!--			</div>-->
+<!--			-->
+<!--			<div  class="zone">-->
+<!--		-->
+<!--				Oven-->
+<!--		-->
+<!--			</div>			-->
+<!--			</div>-->
+<!--		</div>-->
 	
 	
 	</div>
@@ -280,10 +296,10 @@
 	
 	<!-- pop up button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDevice" id="adddevice_but">
-    Add New Devic</button>
+    Add New Device</button>
  
             <!-- Modal -->
-            <div class="modal fade" id="addDevice">
+            <div class="modal fade" id="addDevice" >
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -298,42 +314,17 @@
                         </div>
                 <div class="modal-body">
                <form id="deviceForm" name="device" role="form">
-				<div class="modal-body">				
+				<div class="modal-body">
 					<div class="form-group">
-				
-				
-				
-						<label for="device">Addable Device List</label>
-					
-						<select id="addableDevices" name="addableDevices" class= "form-control">
-							<option value="Refrigerator">Refrigerator</option>
-							<option value="oven">Oven</option>
-							<option value="gasReader">Gas Reader</option>
-							<option value="thermometer">Thermometer</option>
-
-						</select>
-
+						<label for="device">Device Name</label>
+						<input type="text" id="devName" name="device_name" class="form-control" required/>
 					</div>
-					<div class="form-group">
-						<label for="rooms">Room</label>
-					<select id="roomList" name="roomList" class= "form-control">
-
-					<option value="room1">Room1</option>
-					<option value="room2">Room2</option>
-					<option value="toilet">Toilet</option>
-					<option value="kitchen">Kitchen</option>
-
-						</select>
-
-					</div>
-					<div class="form-group">
-						<label for="notes">Note</label>
-						<textarea name="notes" class="form-control"></textarea>
-					</div>					
 				</div>
+
+
 				<div class="modal-footer">					
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<input type="submit" class="btn btn-success" id="submit" value = "submit">
+					<input type="submit" class="btn btn-success"  id="submit" value = "submit">
 				</div>
 			</form>
 
@@ -356,9 +347,12 @@
       <p>Copyright &copy; 2020, All Rights Reserved</p>
     </div>
   </footer>
-  
-  
-  
-  
+
+
+
+		<script th:src="@{/js/getrooms.js}"> </script>
+
+
+
 </body>
 </html>

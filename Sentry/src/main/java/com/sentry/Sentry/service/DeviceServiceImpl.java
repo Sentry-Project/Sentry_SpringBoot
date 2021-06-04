@@ -62,9 +62,14 @@ private DeviceRepository deviceRepository;
         return deviceRepository.findAll();
     }
 
+	@Override
+	public List<Device> findDevicesByRoomRid(int rid) {
+    	devices = deviceRepository.findDevicesByRoomRid(rid);
+		return devices;
+	}
 
 
-    @Override
+	@Override
     @Transactional
     public void save(Device theDevice) {
         deviceRepository.save(theDevice);

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Device {
     //define fields
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DEVICE_ID")
     private int device_id;
 
@@ -22,6 +22,12 @@ public class Device {
 
     //constructors
     public Device(){
+
+    }
+
+    public Device(String device_name,  int  fk_room_id) {
+        this.device_name = device_name;
+        this.fk_room_id=  fk_room_id;
 
     }
 
