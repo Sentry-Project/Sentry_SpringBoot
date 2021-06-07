@@ -13,6 +13,7 @@ public interface SensorService {
 	public long countinactive(int user_id);
 	public long counterror(int user_id);
     public void save(Sensor theSensor);
+	Sensor findById(int i);
     
 }
 
