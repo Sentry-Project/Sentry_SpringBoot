@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.sentry.Sentry.entity.Room;
+import com.sentry.Sentry.entity.Sensor;
 
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 	
@@ -13,5 +14,6 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 	 List<Room> findAll(int user_id);
 
 	//Room 
-
+	@Query(value="SELECT * FROM room WHERE ROOM_ID = ?1",nativeQuery=true)
+	 Room findById(int room_id);
 }

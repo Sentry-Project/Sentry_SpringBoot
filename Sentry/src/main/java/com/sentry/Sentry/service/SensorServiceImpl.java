@@ -15,6 +15,7 @@ public class SensorServiceImpl implements SensorService{
 	private SensorRepository sensorRepository;
 	
 	private List<Sensor> sensors;
+	private Sensor sensor;
 	private long countsensorsactive;
 	private long countsensorsinactive;
 	private long countsensorserror;
@@ -39,6 +40,7 @@ public class SensorServiceImpl implements SensorService{
 		return sensors;
 	}
 
+
 	@Override
 	public List<Sensor> findSensorsByRoomRid(int rid) {
 		sensors = sensorRepository.findSensorsByRoomRid(rid);
@@ -62,5 +64,15 @@ public class SensorServiceImpl implements SensorService{
 		countsensorserror= sensorRepository.counterror(i);
 		// TODO Auto-generated method stub
 		return countsensorserror;
+	}
+
+
+	@Override
+	public Sensor findById(int i) {
+
+			sensor= sensorRepository.findById(i);
+			// TODO Auto-generated method stub
+			return sensor;
+	
 	}
 }
