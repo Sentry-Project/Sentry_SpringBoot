@@ -40,18 +40,18 @@
 
         <!--        <span th:unless="${session.user}">-->
 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#services">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login">Login/Register</a>
-        </li>
+                <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="">Setting</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/room}">Room</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/logout}">SignOut</a>
+				</li>
 
 
         <!--        </>span>-->

@@ -12,8 +12,9 @@ import com.sentry.Sentry.entity.Sensor;
 
 public interface SensorRepository extends JpaRepository<Sensor, Integer> {
 
-
-
+	
+	@Query(value="SELECT * FROM sensor WHERE SENSOR_ID = ?1",nativeQuery=true)
+	 Sensor findById(int sensor_id);
 
 	@Query(value="Select * from sensor WHERE FK_ROOM_ID IN ( SELECT ROOM_ID FROM room WHERE FK_USER_ID = ?1)",nativeQuery=true)
 	 List<Sensor> findAll(int user_id);

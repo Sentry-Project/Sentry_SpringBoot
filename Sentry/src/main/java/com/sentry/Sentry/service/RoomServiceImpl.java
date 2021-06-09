@@ -24,6 +24,7 @@ public class RoomServiceImpl implements RoomService{
     private RoomRepository roomRepository;
     
     private List<Room> rooms;
+    private Room room;
     //private List<Sensor> sensors = new ArrayList<Sensor>();
 
 
@@ -44,6 +45,13 @@ public class RoomServiceImpl implements RoomService{
 		rooms.add(theRoom);
 		roomRepository.save(theRoom);
 		
+	}
+
+	@Override
+	public Room findById(int i) {
+		room = roomRepository.findById(i);
+		// TODO Auto-generated method stub
+		return room;
 	}
     
 

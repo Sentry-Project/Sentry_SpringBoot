@@ -318,6 +318,10 @@ color: #FFFFFF;
   box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
 }
 
+#offdevicebutton:hover {
+    background-color: #f99fa7;
+}
+
 @media only screen and (max-width: 768px) {
   #board{
     height: 300px;
@@ -414,10 +418,10 @@ background-color: #381E41;
 	/*margin-top: 40px;*/
 	margin-top: 75px;
 }
-.block_img1{
+#block_img1{
 	width: 43%;
     float: left;
-    padding: 10px;
+    padding: 40px;
 }
 .block_img{
 	width: 35%;
@@ -474,6 +478,9 @@ background-color: #381E41;
   .device_card{
      height: 150px;
   }
+    #block_img1{
+    padding: 20px;
+ }
   .block{
   font-size: 20px;
  }
@@ -490,6 +497,10 @@ background-color: #381E41;
   .img_rooms{
     height: 160px;
     }
+    #block_img1{
+    padding: 20px;
+    font-size:38px;
+   }
 }
 @media only screen and (max-width: 425px) {
    .temperature{
@@ -500,6 +511,10 @@ background-color: #381E41;
    }
    .device_card{
       height:160px;
+   }
+   #block_img1{
+    padding: 20px;
+    font-size:45px;
    }
 }
 
