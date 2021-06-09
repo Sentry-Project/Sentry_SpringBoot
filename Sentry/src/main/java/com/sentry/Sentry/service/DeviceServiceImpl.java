@@ -18,7 +18,7 @@ public class DeviceServiceImpl implements DeviceService{
 
     
 private DeviceRepository deviceRepository;
-	
+	private boolean deviceStatus;
 	private List<Device> devices;
 	private long countsensorsactive;
 	private long countsensorsinactive;
@@ -66,6 +66,31 @@ private DeviceRepository deviceRepository;
 	public List<Device> findDevicesByRoomRid(int rid) {
     	devices = deviceRepository.findDevicesByRoomRid(rid);
 		return devices;
+	}
+
+	@Override
+	public boolean getDeviceStatus(int did) {
+    	deviceStatus = deviceRepository.getDeviceStatus(did);
+    	return deviceStatus;
+	}
+
+
+	@Override
+	public void updateDeviceStatus(int did) {
+    	boolean theStatus = getDeviceStatus(did);
+    	int newStat;
+		System.out.println(theStatus);
+    	if (theStatus == false){
+    		newStat = 1;
+			//System.out.println(theStatus);
+
+		} else {
+			newStat = 0;
+			//System.out.println(theStatus);
+
+		}
+
+    	deviceRepository.updateDeviceStatus(newStat, did);
 	}
 
 

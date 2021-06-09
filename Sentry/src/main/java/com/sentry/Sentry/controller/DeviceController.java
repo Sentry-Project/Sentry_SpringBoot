@@ -1,7 +1,6 @@
 package com.sentry.Sentry.controller;
 
 import com.sentry.Sentry.entity.Device;
-import com.sentry.Sentry.entity.Sensor;
 import com.sentry.Sentry.service.DeviceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,4 +32,16 @@ public class DeviceController {
         deviceService.save(theDevice);
         return "redirect:/room";
     }
+
+    @RequestMapping(value = "/updateDeviceStatus", method = RequestMethod.POST)
+    public String updateDeviceStatus(@ModelAttribute("device") Device theDevice, @RequestParam("did") Integer did)  {
+
+        deviceService.updateDeviceStatus(did);
+
+
+        return "redirect:/room";
+
+    }
+
+
 }

@@ -115,12 +115,12 @@ function getDevice(rid){
                     '</div>' +
                     '<img class="block_Setting" src="../images/Settings.png" />'+
                     '</div>' +
-                    '<div  class="onoff"> '+ str+'</div>' +
-                    '<div class="zone">' +
+                    '<div onclick="changeStatus(this)"  class="onoff" data-rid="' + rid + '"  data-did="' + deviceData[i].id + '"> '+
                     '<span hidden>' +
                     deviceData[i].id +
                     '</span>' +
-
+                    str+'</div>' +
+                    '<div class="zone">' +
                     deviceData[i].deviceName +
                     '</div>'  +
                     '</div>' +
@@ -163,6 +163,26 @@ $(function (){
         //alert("HEllo bruh")
     })
 });
+
+function changeStatus(ele){
+   let rid =  $(ele).attr('data-rid');
+    let did= $(ele).attr('data-did');
+    console.log(did);
+    $.ajax({
+        type: "POST",
+        url: "updateDeviceStatus",
+        data: {did: did},
+        success: function (data){
+            getDevice(rid)
+            console.log("success");
+        },
+        error: function (e){
+            console.log(e);
+        }
+    })
+}
+
+
 
 
 

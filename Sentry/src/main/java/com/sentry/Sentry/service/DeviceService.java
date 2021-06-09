@@ -7,6 +7,8 @@ import java.util.List;
 public interface DeviceService {
     public List<Device> findAll();
     List<Device> findDevicesByRoomRid(int rid);
+    public boolean getDeviceStatus(int did);
+    public void updateDeviceStatus(int did);
     public Device findById(int theId);
     public long countactive(int user_id);
 	public long countinactive(int user_id);
