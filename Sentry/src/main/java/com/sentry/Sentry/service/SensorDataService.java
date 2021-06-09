@@ -14,4 +14,6 @@ public interface SensorDataService {
     public SensorData findById(int theId);
 
     public void save(SensorData theSensorData);
+    
+    public List<SensorData>findSensorDataByRoomRid(int rid);
 }

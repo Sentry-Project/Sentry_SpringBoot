@@ -60,5 +60,14 @@ public class SensorDataServiceImpl implements SensorDataService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
+	//for room page
+	@Override
+	public List<SensorData> findSensorDataByRoomRid(int rid) {
+		sensorValueType = sensorDataRepository.findSensorDataByRoomRid(rid);
+		return sensorValueType;
+	}
 
 }
