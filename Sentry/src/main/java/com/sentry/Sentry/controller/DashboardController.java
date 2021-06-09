@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sentry.Sentry.entity.Device;
 import com.sentry.Sentry.entity.Room;
 import com.sentry.Sentry.entity.Sensor;
 import com.sentry.Sentry.entity.SensorData;
@@ -94,21 +96,21 @@ public DashboardController(UserService userService,SensorService sensorService, 
 	        System.out.println(map.get(sensorData.get(i)).getSensorType());
 	        theModel.addAttribute("sensorData", sensorData.get(i));
 
-	if (map.get(sensorData.get(i)).getSensorType().equals("Temperature") && sensorData.get(i).getSensorValue() > 60) {
+	if (map.get(sensorData.get(i)).getSensorType().equals("Temperature") && sensorData.get(i).getSensorValue() >= 60) {
 
 		hightemperature = true;
 		
 	}
 	
 
-	if (map.get(sensorData.get(i)).getSensorType().equals("Gas") && sensorData.get(i).getSensorValue() > 45) {
+	if (map.get(sensorData.get(i)).getSensorType().equals("Gas") && sensorData.get(i).getSensorValue() >= 45) {
 
 		highgas = true;
 		
 	}
 	
 
-	if (map.get(sensorData.get(i)).getSensorType().equals("Water") && sensorData.get(i).getSensorValue() > 0.05) {
+	if (map.get(sensorData.get(i)).getSensorType().equals("Water") && sensorData.get(i).getSensorValue() >= 0.05) {
 
 		highwater = true;
 		
@@ -141,6 +143,20 @@ public DashboardController(UserService userService,SensorService sensorService, 
 
 	        return "dashboard";
 	    }
+	 
+	 @RequestMapping(value = "/offDevice")
+	   public String updateDevice(Authentication authentication){
+		 
+		 User theUser = userService.findByUserName(authentication.getName());
+		 List<Device> alldevices = deviceService.findAll();
+		 for(int i=0; i<alldevices.size();i++) {
+			 alldevices.get(i).setDeviceStatus(0);
+			 deviceService.save(alldevices.get(i));
+		 }
+
+	     return "redirect:/dashboard";
+	   }
+	 
 //	 public static void main(String[]args) {
 //		 
 //		 List<SensorData> sensorData = sensorDataService.sensorValueType(5);
