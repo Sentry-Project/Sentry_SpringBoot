@@ -122,9 +122,18 @@
 						
 						</div>
 						
-						<i th:if="${map.get(s).getSensorType() == 'Temperature'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="fas fa-exclamation-circle fa-2x me-4" style="color: green"></i>
+						<i th:if="${map.get(s).getSensorType() == 'Temperature'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="fas fa-exclamation-circle fa-2x me-4" style="color: yellow"></i>
 						<div th:if="${map.get(s).getSensorType() == 'Temperature'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="content">
-						      <p>High Temperature detected</p>
+						      <p>Very High Temperature detected</p>
+						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
+						      <p>Level: <spam th:text="${middlelevel}"></spam> </p>
+						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>
+						
+						</div>
+						
+						<i th:if="${map.get(s).getSensorType() == 'Temperature'} and ${s.getSensorValue() > 40} and ${s.getSensorValue() < 50}" class="fas fa-exclamation-circle fa-2x me-4" style="color: green"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Temperature'} and ${s.getSensorValue() > 40} and ${s.getSensorValue() < 50}" class="content">
+						      <p>Extremely High Temperature detected</p>
 						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
 						      <p>Level: <spam th:text="${lowlevel}"></spam> </p>
 						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>
@@ -132,10 +141,8 @@
 						</div>
 						
 						
-						
-						
-						<i th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="fas fa-exclamation-circle fa-2x me-4" style="color: green"></i>
-						<div th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="content">
+						<i th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 30} and ${s.getSensorValue() < 35}" class="fas fa-exclamation-circle fa-2x me-4" style="color: green"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 30} and ${s.getSensorValue() < 35}" class="content">
 						      <p>Gaz detected</p>
 						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
 						      <p>Level: <spam th:text="${lowlevel}"></spam> </p>
@@ -143,9 +150,19 @@
 						
 						</div>
 						
-						<i th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 60}" class="fas fa-exclamation-circle fa-2x me-4" style="color: red"></i>
-						<div th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 60}" class="content">
-						      <p>High Temperature detected</p>
+						<i th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 35} and ${s.getSensorValue() < 45}" class="fas fa-exclamation-circle fa-2x me-4" style="color: yellow"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 35} and ${s.getSensorValue() < 45}" class="content">
+						      <p>Gaz detected</p>
+						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
+						      <p>Level: <spam th:text="${middlelevel}"></spam> </p>
+						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>
+						
+						</div>
+						
+						
+						<i th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 45}" class="fas fa-exclamation-circle fa-2x me-4" style="color: red"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Gas'} and ${s.getSensorValue() > 45}" class="content">
+						      <p>High Gaz detected</p>
 						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
 						      <p>Level: <spam th:text="${highlevel}"></spam> </p>
 						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>
@@ -153,18 +170,29 @@
 						</div>
 						
 						
-						<i th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="fas fa-exclamation-circle fa-2x me-4" style="color: green"></i>
-						<div th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 50} and ${s.getSensorValue() < 60}" class="content">
-						      <p>Gaz detected</p>
+						<i th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 0.008} and ${s.getSensorValue() < 0.02}" class="fas fa-exclamation-circle fa-2x me-4" style="color: green"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 0.008} and ${s.getSensorValue() < 0.02}" class="content">
+						      <p>Water detected</p>
 						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
 						      <p>Level: <spam th:text="${lowlevel}"></spam> </p>
 						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>
 						
 						</div>
 						
-						<i th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 60}" class="fas fa-exclamation-circle fa-2x me-4" style="color: red"></i>
-						<div th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 60}" class="content">
-						      <p>High Temperature detected</p>
+						
+						<i th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 0.02} and ${s.getSensorValue() < 0.05}" class="fas fa-exclamation-circle fa-2x me-4" style="color: yellow"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 0.02} and ${s.getSensorValue() < 0.05}" class="content">
+						      <p>Water detected</p>
+						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
+						      <p>Level: <spam th:text="${middlelevel}"></spam> </p>
+						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>
+						
+						</div>
+						
+						
+						<i th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 0.05}" class="fas fa-exclamation-circle fa-2x me-4" style="color: red"></i>
+						<div th:if="${map.get(s).getSensorType() == 'Water'} and ${s.getSensorValue() > 0.05}" class="content">
+						      <p>High water detected</p>
 						      <p>Room: <spam th:text="${map.get(s).getRoom().getrname()}"></spam> </p>
 						      <p>Level: <spam th:text="${highlevel}"></spam> </p>
 						      <p> Value: <spam  th:text="${s.getSensorValue()}"></spam>  </p>

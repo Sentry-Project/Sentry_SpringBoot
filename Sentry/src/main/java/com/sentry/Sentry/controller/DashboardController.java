@@ -94,17 +94,17 @@ public DashboardController(UserService userService,SensorService sensorService, 
 	        System.out.println(map.get(sensorData.get(i)).getSensorType());
 	        theModel.addAttribute("sensorData", sensorData.get(i));
 	 
-	if (map.get(sensorData.get(i)).getSensorType().equals("Temperature") && sensorData.get(i).getSensorValue() > 50) {
+	if (map.get(sensorData.get(i)).getSensorType().equals("Temperature") && sensorData.get(i).getSensorValue() > 60) {
 		hightemperature = true;
 		
 	}
 	
-	if (map.get(sensorData.get(i)).getSensorType().equals("Gas") && sensorData.get(i).getSensorValue() > 50) {
+	if (map.get(sensorData.get(i)).getSensorType().equals("Gas") && sensorData.get(i).getSensorValue() > 45) {
 		highgas = true;
 		
 	}
 	
-	if (map.get(sensorData.get(i)).getSensorType().equals("Water") && sensorData.get(i).getSensorValue() > 50) {
+	if (map.get(sensorData.get(i)).getSensorType().equals("Water") && sensorData.get(i).getSensorValue() > 0.05) {
 		highwater = true;
 		
 	}
@@ -119,6 +119,7 @@ public DashboardController(UserService userService,SensorService sensorService, 
 		 theModel.addAttribute("smokealert", " smoke detected");
 		 theModel.addAttribute("wateralert", "water detected");
 		 theModel.addAttribute("highlevel","high");
+		 theModel.addAttribute("middlelevel","middle");
 		 theModel.addAttribute("lowlevel","low");
 		 theModel.addAttribute("hightemperature", hightemperature);
 		 theModel.addAttribute("highgas", highgas);
